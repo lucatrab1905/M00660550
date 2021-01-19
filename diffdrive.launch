@@ -2,7 +2,7 @@
   <arg name="model" default="m00660550/01-myfirst.urdf"/>
   <arg name="rvizconfig" default="m00660550/rviz/urdf.rviz" />
 
-  <include file="m00660550/gazebo.launch">
+  <include file="$(find m00660550)/gazebo.launch">
     <arg name="model" value="$(arg model)" />
   </include>
 
