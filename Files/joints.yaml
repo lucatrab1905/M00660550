@@ -1,0 +1,12 @@
+type: "joint_state_controller/JointStateController"
+publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+right_back_wheel_joint_controller:
+  type: effort_controllers/JointPositionController
+  joint: right_back_wheel_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+left_back_wheel_joint_controller:
+  type: effort_controllers/JointPositionController
+  joint: left_back_wheel_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
