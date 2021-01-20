@@ -2,10 +2,12 @@
   <arg name="model" default="m00660550/01-myfirst.urdf"/>
   <arg name="rvizconfig" default="m00660550/urdf.rviz" />
 
+
+<!--
   <include file="$(find m00660550)/gazebo.launch">
     <arg name="model" value="$(arg model)" />
   </include>
-
+-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
 
   <rosparam command="load"
