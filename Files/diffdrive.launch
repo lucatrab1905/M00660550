@@ -22,8 +22,8 @@
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
     <param name="default_topic" value="/cmd_vel"/>
   </node>
-
+<!--
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
   <node name="state_publisher" pkg="r2d2" type="state_publisher" />
-
+-->
 </launch>
