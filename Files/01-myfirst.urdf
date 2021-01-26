@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <robot name="Bobby" xmlns:xacro="http://ros.org/wiki/xacro">
-
+<!--
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
+      <robotNamespace>/bobby</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
 
-
+-->
 
   <material name="blue">
     <color rgba="0 0 0.8 1"/>
@@ -141,7 +141,7 @@
     </transmission>
 
 
-    <link name="front_wheel">
+    <link name="front_right_wheel">
       <visual>
         <origin rpy="1.57075 0 0" xyz="0 0 0"/>
         <geometry>
@@ -160,14 +160,49 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
     </link>
-    <joint name="front_wheel_joint" type="continuous">
+    <joint name="front_right_wheel_joint" type="continuous">
       <axis rpy="0 0 0" xyz="0 1 0"/>
       <parent link="base_link"/>
-      <child link="front_wheel"/>
-      <origin rpy="0 0 0" xyz="0.1 0 -0.085"/>
+      <child link="front_right_wheel"/>
+      <origin rpy="0 0 0" xyz="0.1 0.15 -0.085"/>
     </joint>
 
-    <gazebo reference="front_wheel">
+    <gazebo reference="front_right_wheel">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+
+    <link name="front_left_wheel">
+      <visual>
+        <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.05" radius="0.035"/>
+        </geometry>
+        <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.035"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    </link>
+    <joint name="front_left_wheel_joint" type="continuous">
+      <axis rpy="0 0 0" xyz="0 1 0"/>
+      <parent link="base_link"/>
+      <child link="front_left_wheel"/>
+      <origin rpy="0 0 0" xyz="0.1 -0.15 -0.085"/>
+    </joint>
+
+    <gazebo reference="front_left_wheel">
       <mu1 value="200.0"/>
       <mu2 value="100.0"/>
       <kp value="10000000.0" />
@@ -190,7 +225,7 @@
       <origin rpy="0 1.57075 0" xyz="0 0 -0.3"/>
     </collision>
     <inertial>
-      <mass value="5"/>
+      <mass value="0.5"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
@@ -226,7 +261,7 @@
       <origin rpy="0 0 -0.7" xyz="0 0.2 0"/>
     </collision>
     <inertial>
-      <mass value="5"/>
+      <mass value="0.5"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
@@ -260,7 +295,7 @@
       <origin rpy="0 0 0.7" xyz="0 -0.2 0"/>
     </collision>
     <inertial>
-      <mass value="5"/>
+      <mass value="0.5"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
@@ -299,7 +334,7 @@
       <wheelDiameter>0.07</wheelDiameter>
 
     <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
-      <wheelAcceleration>1.0</wheelAcceleration>
+      <wheelAcceleration>0.1</wheelAcceleration>
 
     <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
       <wheelTorque>20</wheelTorque>
